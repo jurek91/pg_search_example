@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row" style="justify-content:center;">
+    <div style="text-align: center;"><h1>BOOKS</h1></div>
+    <div style="margin-left: 43%; margin-bottom: 20px; margin-top:10px;">
+
+
+      <%= form_tag books_path, method: :get do %>
+        <%= text_field_tag :query, params[:query],
+        placeholder: "Find a book"%>
+        <%= submit_tag "Search"%>
+      <% end %>
+
+
+    </div>
+    <div style="align-items: center; margin-left: 30%;">
+        <% @books.each do |book| %>
+        <div id="books" style="max-width: 500px;text-align: center; background-color: pink;border: 1px solid black;border-radius: 5px; margin-bottom: 15px; padding: 20px">
+          <h4><strong><%= book.title %></strong> </h4>
+          <p>Description: <%= book.description %></p>
+          <p>by <%= book.author.first_name %> <%= book.author.last_name %> </p>
+          <p><%= book.id %></p>
+          </div>
+        <% end %>
+    </div>
+  </div>
+  </div>
+</div>
